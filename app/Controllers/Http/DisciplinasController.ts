@@ -8,7 +8,7 @@ export default class DisciplinasController {
 
         const {nome, cursoId} = request.all()
 
-        const disciplinas = Disciplina.query()
+        const disciplinas = Disciplina.query().preload('curso')
                                      .select(['id', 'nome', 'cursoId'])
 
         if(cursoId){
@@ -16,7 +16,7 @@ export default class DisciplinasController {
         }
 
         if(nome){
-            disciplinas.where('nome', nome)
+            disciplinas.where('nome', 'like', '%' + nome + '%')
         }
     
         return disciplinas
