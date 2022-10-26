@@ -1,0 +1,49 @@
+npm init adonis-ts-app@latest academico
+node ace serve --watch
+
+npm i @adonisjs/lucid
+node ace configure @adonisjs/lucid
+
+// Criando um controller
+node ace make:controller Curso
+node ace make -h
+
+// Criando um model
+node ace make:model Curso -m
+
+public static table = 'personagens'
+
+// Migration
+node ace make:migration curso
+
+node ace migration:run
+node ace migration:rollback
+node ace migration:reset
+node ace migration:refresh
+node ace migration:refresh --seed
+
+// Seeders
+node ace make:seeder curso
+node ace db:seed
+node ace db:seed -i
+
+@column()
+public duracao: number
+
+table.integer('aluno_id').unsigned().references('id').inTable('alunos')
+
+node ace list:routes
+
+await Cliente.createMany([
+  {}
+])
+
+
+Git
+git init
+
+git config --global user.name "Orion Teles de Mesquita"
+git config --global user.email "orionteles@gmail.com"
+
+@belongsTo(()=>Curso)
+public curso: BelongsTo<typeof Curso>
